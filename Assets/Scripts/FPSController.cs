@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FPSController : MonoBehaviour
 {
+    // events
+    [SerializeField] UnityEvent<float, float> TakeDamage;
+
     // references
     CharacterController controller;
     [SerializeField] GameObject cam;
@@ -16,7 +20,8 @@ public class FPSController : MonoBehaviour
     [SerializeField] float lookSensitivityY = 1.0f;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float jumpForce = 10;
-    
+    [SerializeField] float maxHealth = 10;
+
     // private variables
     Vector3 velocity;
     bool grounded;
@@ -24,6 +29,7 @@ public class FPSController : MonoBehaviour
     List<Gun> equippedGuns = new List<Gun>();
     int gunIndex = 0;
     Gun currentGun = null;
+    float health;
 
     // properties
     public GameObject Cam { get { return cam; } }
@@ -31,7 +37,8 @@ public class FPSController : MonoBehaviour
 
     private void Awake()
     {
-        
+        health = maxHealth;
+        TakeDamage.Invoke(health, maxHealth);
     }
 
     // Start is called before the first frame update
@@ -170,6 +177,8 @@ public class FPSController : MonoBehaviour
             var collisionPoint = hit.collider.ClosestPoint(transform.position);
             var knockbackAngle = (transform.position - collisionPoint).normalized;
             velocity = (20 * knockbackAngle);
+            health -= hit.gameObject.GetComponent<Damager>().damage;
+            TakeDamage.Invoke(health, maxHealth);
         }
     }
 }

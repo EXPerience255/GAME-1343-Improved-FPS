@@ -17,4 +17,15 @@ public class PlayerHUD : MonoBehaviour
     {
         player = FindObjectOfType<FPSController>();
     }
+
+    public void ChangeAmmoDisplay(int ammo, int maxAmmo)
+    {
+        currentAmmoText.text = ammo.ToString();
+        maxAmmoText.text = maxAmmo.ToString();
+    }
+
+    public void ChangeHealthDisplay(float health, float maxHealth)
+    {
+        healthBar.fillAmount = health / maxHealth;
+    }
 }
