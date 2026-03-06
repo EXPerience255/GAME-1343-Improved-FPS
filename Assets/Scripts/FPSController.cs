@@ -115,12 +115,8 @@ public class FPSController : MonoBehaviour
 
     void RefillAmmo()
     {
-        Debug.Log("Testing...");
-        Debug.Log(GetPressInteract());
-        Debug.Log(canRefillAmmo);
         if (GetPressInteract() && canRefillAmmo)
         {
-            Debug.Log("This Should Work");
             IncreaseAmmo(3);
         }
     }
@@ -169,7 +165,7 @@ public class FPSController : MonoBehaviour
 
     bool GetPressInteract()
     {
-        return Input.GetButton("Interact");
+        return Input.GetButtonDown("Interact");
     }
 
     Vector2 GetPlayerMovementVector()
