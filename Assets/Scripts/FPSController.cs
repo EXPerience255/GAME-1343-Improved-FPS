@@ -7,6 +7,8 @@ public class FPSController : MonoBehaviour
 {
     // events
     [SerializeField] UnityEvent<float, float> TakeDamage;
+    // "events"
+    public bool canRefillAmmo = false;
 
     // references
     CharacterController controller;
@@ -33,7 +35,7 @@ public class FPSController : MonoBehaviour
 
     // properties
     public GameObject Cam { get { return cam; } }
-    
+
 
     private void Awake()
     {
@@ -58,6 +60,7 @@ public class FPSController : MonoBehaviour
         Look();
 
         FireGun();
+        RefillAmmo();
 
         // always go back to "no velocity"
         // "velocity" is for movement speed that we gain in addition to our movement (falling, knockback, etc.)
@@ -69,7 +72,7 @@ public class FPSController : MonoBehaviour
     {
         grounded = controller.isGrounded;
 
-        if(grounded && velocity.y < 0)
+        if (grounded && velocity.y < 0)
         {
             velocity.y = -0.5f;
         }
@@ -80,7 +83,7 @@ public class FPSController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            velocity.y += Mathf.Sqrt (jumpForce * -1 * gravity);
+            velocity.y += Mathf.Sqrt(jumpForce * -1 * gravity);
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -104,9 +107,21 @@ public class FPSController : MonoBehaviour
 
     void FireGun()
     {
-        if(GetPressFire())
+        if (GetPressFire())
         {
             currentGun?.AttemptFire();
+        }
+    }
+
+    void RefillAmmo()
+    {
+        Debug.Log("Testing...");
+        Debug.Log(GetPressInteract());
+        Debug.Log(canRefillAmmo);
+        if (GetPressInteract() && canRefillAmmo)
+        {
+            Debug.Log("This Should Work");
+            IncreaseAmmo(3);
         }
     }
 
@@ -150,6 +165,11 @@ public class FPSController : MonoBehaviour
     bool GetHoldFire()
     {
         return Input.GetButton("Fire1");
+    }
+
+    bool GetPressInteract()
+    {
+        return Input.GetButton("Interact");
     }
 
     Vector2 GetPlayerMovementVector()

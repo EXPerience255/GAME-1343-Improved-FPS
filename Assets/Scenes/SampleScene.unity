@@ -2160,13 +2160,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23024096, y: -0.74826807, z: 0.5307842, w: 0.32458004}
+  m_LocalRotation: {x: -0.59191746, y: -0.5055547, z: 0.20953034, w: -0.5917307}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 70.7, y: -133.1, z: 0}
+  m_LocalEulerAnglesHint: {x: 65.835, y: -238.82599, z: 58.898}
 --- !u!1 &790927777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,6 +2484,7 @@ GameObject:
   - component: {fileID: 1192293102}
   - component: {fileID: 1192293101}
   - component: {fileID: 1192293100}
+  - component: {fileID: 1192293104}
   m_Layer: 8
   m_Name: Refill Station Mesh
   m_TagString: Untagged
@@ -2576,12 +2577,24 @@ Transform:
   m_GameObject: {fileID: 1192293099}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.004, y: 2.19, z: 0.661}
   m_LocalScale: {x: 0.4577916, y: 1.0050251, z: 0.4577916}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 529948332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1192293104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192293099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d4f9f31dbc3cb448a29eb94f4b5db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1298429038
 GameObject:
   m_ObjectHideFlags: 3
@@ -4658,8 +4671,8 @@ MonoBehaviour:
   gunBarrelEnd: {fileID: 11768569}
   bulletPrefab: {fileID: 487163690456666478, guid: 8eca411acead9e64e8f7c5fa7bc3db2c, type: 3}
   anim: {fileID: 1755030702}
-  maxAmmo: 5
-  timeBetweenShots: 0.05
+  maxAmmo: 10
+  timeBetweenShots: 0.1
 --- !u!95 &1755030702
 Animator:
   serializedVersion: 7
@@ -5145,8 +5158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vcam: {fileID: 1831139363}
-  shakeStrength: 10
-  shakeLength: 0.2
+  shakeStrength: 5
+  shakeLength: 0.1
 --- !u!1 &1868938280
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,6 +60,14 @@ public class Gun : MonoBehaviour
 
     public void AddAmmo(int amount)
     {
-        ammo += amount;
+        if(ammo + amount < maxAmmo)
+        {
+            ammo += amount;
+        }
+        else
+        {
+            ammo = maxAmmo;
+        }
+        OnAmmoUse.Invoke(ammo, maxAmmo);
     }
 }
